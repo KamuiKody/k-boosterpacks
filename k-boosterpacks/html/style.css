@@ -1,0 +1,349 @@
+body {
+  display: block;
+  background:transparent;
+  overflow-y:hidden;
+}
+
+.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card__face {
+  backface-visibility: hidden;
+}
+
+.card__face--back {
+  position:absolute;
+  top:0;
+  transform: rotateY(180deg);
+}
+
+.card {
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+  width:300px;
+  height:450px;
+}
+
+.card-container {
+  display:none;
+  position:absolute;
+  overflow-y:hidden;
+  top: 50%;
+  left:50%;
+  width:1920px;
+  transform: translate(-50%, -50%);
+}
+
+#pack-opened {
+  display:none;
+  position: relative;
+  top: 20%;
+}
+
+#pack-opened .pack-flash {
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  z-index: 5;
+  perspective: 5000px;
+  -webkit-perspective: 5000px;
+}
+
+
+
+#pack-opened .pack-flash .pack-flash-light, #pack-opened .pack-flash .pack-flash-particles, #pack-opened .pack-flash .pack-flash-pack {
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+#pack-opened .pack-flash .pack-flash-light, #pack-opened .pack-flash .pack-flash-particles {
+  width: 100%;
+}
+
+#pack-opened.open .pack-flash .pack-flash-light {
+  -webkit-animation: pack-flash-light 3s ease-out;
+  animation: pack-flash-light 3s ease-out;
+  opacity: 0;
+}
+
+#pack-opened.open .pack-flash .pack-flash-particles {
+  -webkit-animation: pack-flash-particles 3s ease-out;
+  animation: pack-flash-particles 3s ease-out;
+  opacity: 0
+}
+
+
+#pack-opened .pack-flash .pack-flash-pack {
+  position: relative;
+  opacity: 1;
+  padding-top: 55%;
+  margin: 10% 10%;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  background-size: 0 0
+}
+
+#pack-opened.open .pack-flash .pack-flash-pack {
+  opacity: 0;
+  -webkit-animation: pack-flash-pack 3s ease-in-out;
+  animation: pack-flash-pack 3s ease-in-out;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+#pack-opened .pack-flash .pack-flash-pack .bottom {
+  position: absolute;
+  top: 100%;
+  left: -5%;
+  width: 110%;
+  height: 6.74157303%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+}
+
+#pack-opened.open .pack-flash .pack-flash-pack .top {
+ -webkit-animation: pack-flash-pack-top .9s ease-in 1.2s forwards;
+  animation: pack-flash-pack-top .9s ease-in 1.2s forwards;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top img, #pack-opened .pack-flash .pack-flash-pack .top span {
+  float: left;
+  height: 100%;
+  width: 25%;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top img {
+  height: 100%;
+  width: 100%;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top .cut {
+  position: absolute;
+  bottom: 0;
+  top: 100%;
+  opacity: 0;
+  z-index: 9;
+
+}
+
+#pack-opened.open .pack-flash .pack-flash-pack .top .cut {
+  -webkit-animation: pack-flash-pack-cut .9s ease-out;
+  animation: pack-flash-pack-cut .9s ease-out;
+  opacity: 0;
+
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
+  margin-top: -60px;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top .cut img {
+  width: 100%;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top span {
+  -webkit-transform-origin: 0% 100%;
+  -ms-transform-origin: 0% 100%;
+  transform-origin: 0% 100%;
+  display: inline-block;
+}
+
+
+#pack-opened.open .pack-flash .pack-flash-pack .top span {
+  -webkit-animation: pack-flash-pack-rip .75s ease-in-out .9s forwards;
+  animation: pack-flash-pack-rip .75s ease-in-out .9s forwards;
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>img {
+  width: 25%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span {
+  width: 75%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span>img {
+  width: 33.33%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span>span {
+  width: 66.66%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span>span>img {
+  width: 50%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span>span>span {
+  width: 50%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .top>span>span>span>img {
+  width: 100%
+}
+
+#pack-opened .pack-flash .pack-flash-pack .pack-count-corner {
+  top: 0;
+  right: 0px;
+  z-index: 3
+}
+
+
+#pack-opened .cards-reveal {
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  z-index: 4;
+  perspective: 5000px;
+  -webkit-perspective: 5000px;
+}
+
+#pack-opened .cards-reveal ul {
+  margin: 50px;
+  position: relative;
+  overflow: visible;
+}
+#pack-opened .cards-reveal ul li {
+  width: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+#pack-opened .cards-reveal ul li img {
+  width: 100%;
+}
+#pack-opened.open .cards-reveal ul li.card-01 {
+  animation: card-spread-01 .5s ease forwards;
+  animation-delay: 2.5s;
+  z-index: 4;
+}
+
+#pack-opened.open .cards-reveal ul li.card-02 {
+  animation: card-spread-02 .5s ease forwards;
+  animation-delay: 2.5s;
+  z-index: 3;
+}
+#pack-opened.open .cards-reveal ul li.card-03 {
+  animation: card-spread-03 .5s ease forwards;
+  animation-delay: 2.5s;
+  z-index: 2;
+}
+#pack-opened.open .cards-reveal ul li.card-04 {
+  animation: card-spread-04 .5s ease forwards;
+  animation-delay: 2.5s;
+  z-index: 1;
+}
+#pack-opened.open .cards-reveal ul li.gold {
+  box-shadow: 0 0 100px #fede3c;  
+}
+
+
+
+
+@keyframes pack-flash-pack {
+  0% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1
+  }
+  40% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1
+  }
+  55% {
+    transform: translateY(0%)
+  }
+  75% {
+    transform: translateY(300%);
+    opacity: 1
+  }
+  85% {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+}
+
+@keyframes pack-flash-pack-top {
+  0% {
+    transform: rotate(0deg)
+  }
+  50% {
+    opacity: 0
+  }
+  100% {
+    transform: rotate(-180deg) translateX(1000%);
+    opacity: 0
+  }
+}
+
+@keyframes pack-flash-pack-cut {
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: rotate(0);
+  }
+  30% {
+    opacity: 1
+  }
+  80% {
+    opacity: 1
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes pack-flash-pack-rip {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(-40deg)
+  }
+}
+
+@keyframes pack-flash-light {
+  0% {
+    transform: scale(.8) translateZ(-300px)
+  }
+  10% {
+    transform: scale(1) translateZ(-900px);
+    opacity: 1
+  }
+  50% {
+    opacity: 1
+  }
+  75% {
+    opacity: 0
+  }
+}
+
